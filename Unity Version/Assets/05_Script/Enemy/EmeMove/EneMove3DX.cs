@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class EneMove3D : MonoBehaviour {
+public class EneMove3DX : MonoBehaviour {
 	
 	
 	public int z1;
