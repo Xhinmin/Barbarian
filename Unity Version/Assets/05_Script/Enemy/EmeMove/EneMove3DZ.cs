@@ -8,6 +8,7 @@ public class EneMove3DZ : MonoBehaviour {
 	public int x1;
 	public int x2;
 	public int moveX;
+	private int XX;
 	
 
 	// Use this for initialization
@@ -25,8 +26,10 @@ public class EneMove3DZ : MonoBehaviour {
                                               this.transform.position.z 
                                               );
 		
+	    XX = (int)this.transform.position.x;
+
 		
-		if (this.transform.position.x>x1 || this.transform.position.x<x2)
+		if (XX>x1 || XX<x2)
 			moveX = -moveX;
 		
 		

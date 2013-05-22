@@ -6,6 +6,7 @@ public class PlayerInput3D : MonoBehaviour {
 	
 		public int x;
 		public int z;
+		public Transform warcry;
 
 	
 	// Use this for initialization
@@ -20,27 +21,38 @@ public class PlayerInput3D : MonoBehaviour {
 	
 	}
 	
+	
+	
+	
+	
 	void FixedUpdate(){
 		
 		
 	
 	
-		if(Input.GetKey("up"))
-{
+if(Input.GetKey("up")){
 		 rigidbody.AddForce(x, 0, 0);
-}
-if(Input.GetKey("down"))
-{
+         }
+		
+if(Input.GetKey("down")){
 		 rigidbody.AddForce(-x, 0, 0);
-}
-if(Input.GetKey("left"))
-{
+         }
+		
+if(Input.GetKey("left")){
 		 rigidbody.AddForce(0, 0, z);
-}
-if(Input.GetKey("right"))
-{
+         }
+		
+if(Input.GetKey("right")){
 		 rigidbody.AddForce(0, 0, -z);
-}
+         }
+		
+if(Input.GetKey("space")){	
+	     Instantiate(warcry,new Vector3
+				(this.transform.position.x,this.transform.position.y,this.transform.position.z),warcry.rotation);
+		 }	
+	
+	
+	
 	}
 	
 	
