@@ -25,16 +25,16 @@ public class EnemyMake3D : MonoBehaviour {
 			
 			
 			if(randomemeny == 0){			
-			float newPositionX = Random.Range(randonPX.x,randonPX.y);
-			createEnemy = false;
-			Instantiate(newEnemy1,new Vector3(newPositionX,0,110),newEnemy1.rotation);
+				float newPositionX = Random.Range(randonPX.x,randonPX.y);
+				createEnemy = false;
+				Instantiate(newEnemy1,new Vector3(newPositionX,0,110),newEnemy1.rotation);
 			}
 			
 			
 			else if(randomemeny == 1){			
-			float newPositionZ = Random.Range(randonPZ.x,randonPZ.y);
-			createEnemy = false;
-			Instantiate(newEnemy2,new Vector3(80,0,newPositionZ),newEnemy1.rotation);
+				float newPositionZ = Random.Range(randonPZ.x,randonPZ.y);
+				createEnemy = false;
+				Instantiate(newEnemy2,new Vector3(80,0,newPositionZ),newEnemy1.rotation);
 			}
 		
 		

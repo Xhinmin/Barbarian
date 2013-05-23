@@ -6,14 +6,16 @@ public class warcry : MonoBehaviour {
 	public int cryrange;
 	public float warcryx;
 	public float warcryz;
-	private int cryrangecount;
+	public int cryrangecount;
 		
 	
 	
 	// Use this for initialization
 	void Start () {
-	this.transform.renderer.material.color = Color.blue;
-	cryrangecount = 0;
+		
+		this.transform.renderer.material.color = Color.blue;
+		cryrangecount = 0;
+	
 	}
 	
 	// Update is called once per frame
@@ -25,13 +27,13 @@ public class warcry : MonoBehaviour {
 	
 		
 		
-	this.transform.localScale = new Vector3(this.transform.localScale.x + warcryx, 
-			                                this.transform.localScale.y , 
-		                                  	this.transform.localScale.z + warcryz);
+		this.transform.localScale = new Vector3(this.transform.localScale.x + warcryx, 
+				                                this.transform.localScale.y , 
+			                                  	this.transform.localScale.z + warcryz);
 	
 		cryrangecount++;
-		if(cryrangecount == cryrange){
-			DestroyObject(this.transform);
+		if(cryrangecount >= cryrange){
+			DestroyObject(this.gameObject);
 		}
 		
 	
