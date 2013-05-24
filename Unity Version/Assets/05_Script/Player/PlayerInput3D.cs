@@ -7,6 +7,7 @@
 			public int x;
 			public int z;
 			public Transform warcry;
+	        public int dumping;
 	
 		
 		// Use this for initialization
@@ -49,9 +50,17 @@
 					
 			if(Input.GetKey("space")){	
 						
+			
+			       if(dumping>=10){
 				     Instantiate(warcry,new Vector3
 							(this.transform.position.x,this.transform.position.y,this.transform.position.z),warcry.rotation);
-					 }	
+				      dumping=0;
+			}	
+			
+			
+			dumping++;
+			
+			}	
 	               }
 				
 		

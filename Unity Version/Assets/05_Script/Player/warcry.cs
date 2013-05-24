@@ -6,15 +6,14 @@ public class warcry : MonoBehaviour {
 	public int cryrange;
 	public float warcryx;
 	public float warcryz;
-	public int cryrangecount;
-		
+
 	
 	
 	// Use this for initialization
 	void Start () {
 		
 		this.transform.renderer.material.color = Color.blue;
-		cryrangecount = 0;
+
 	
 	}
 	
@@ -31,8 +30,8 @@ public class warcry : MonoBehaviour {
 				                                this.transform.localScale.y , 
 			                                  	this.transform.localScale.z + warcryz);
 	
-		cryrangecount++;
-		if(cryrangecount >= cryrange){
+
+		if(this.transform.localScale.x >= cryrange){
 			DestroyObject(this.gameObject);
 		}
 		
