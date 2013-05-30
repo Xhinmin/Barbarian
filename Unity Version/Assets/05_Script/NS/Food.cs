@@ -10,7 +10,7 @@ public class Food : MonoBehaviour {
 	    //NEW POSITION
         newPosition();
         //AUTO ROTATE
-        iTween.RotateAdd(this.gameObject, iTween.Hash("y", 360, "time", 5, "looptype", "loop", "easetype", iTween.EaseType.linear));
+        iTween.RotateAdd(this.gameObject, iTween.Hash("y", 360, "time", 1.5, "looptype", "loop", "easetype", iTween.EaseType.linear));
 	}
 	
 	// Update is called once per frame

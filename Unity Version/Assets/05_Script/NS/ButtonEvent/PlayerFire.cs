@@ -7,6 +7,7 @@ public class PlayerFire : MonoBehaviour {
     public GameObject player;
 	void Start () {
         player.GetComponent<Player>().Fire();
+		FUI.FoodCount = 0;
         Destroy(this.gameObject);
     }
 	

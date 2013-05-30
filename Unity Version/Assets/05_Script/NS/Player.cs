@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     public float speed;
     Vector3 Force;
     public Transform EnemyPrefab;
+	int emenycount;
     // Use this for initialization
     void Start()
     {
@@ -18,21 +19,26 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (this.transform.position.y >= 10)
+
+		
+		
+		if (this.transform.position.y >= 10)
             this.transform.position = new Vector3(this.transform.position.x, 10, this.transform.position.z);
 
         //測試音量大小
-        if (FUI.Volume > 0.2)
+        if (FUI.Volume > 0.30)
         {
             iTween.ColorTo(GameObject.Find("Ring"), iTween.Hash("r", 1, "g", 0, "b", 0, "a", 1, "time", 0.25));
             iTween.ColorTo(GameObject.Find("Ring"), iTween.Hash("r", 1, "g", 1, "b", 1, "a", 1, "time", 0.25, "delay", 0.25));
             foreach (GameObject e in GameObject.FindGameObjectsWithTag("Enemy"))
             {
                 float dis = Vector3.Distance(this.transform.position, e.transform.position);
-                if (dis < 20 + FUI.FoodCount * 5)
+                if (dis < 40 + FUI.FoodCount * 10)
                 {
                     Destroy(e.gameObject);
+					scorecount();
                     FUI.FoodCount = 0;
+		   		    
                 }
             }
 
@@ -94,8 +100,10 @@ public class Player : MonoBehaviour
     {
         if (obj.transform.name == "EnemyPrefab" || obj.transform.name == "EnemyPrefab(Clone)")
         {
-            Destroy(obj.gameObject);
+            iTween.ColorFrom(GameObject.Find("Barbar01"), iTween.Hash("r", 1, "g", 0, "b", 0, "a", 1, "time", 0.25));
+			Destroy(obj.gameObject);
             FUI.HP--;
+			
         }
         if (obj.transform.name == "FoodPrefab" || obj.transform.name == "FoodPrefab(Clone)")
         {
@@ -114,9 +122,18 @@ public class Player : MonoBehaviour
         foreach (GameObject e in GameObject.FindGameObjectsWithTag("Enemy"))
         {
             float dis = Vector3.Distance(this.transform.position, e.transform.position);
-            if (dis < 50 + FUI.FoodCount * 10)
+            if (dis < 40 + FUI.FoodCount * 10)
                 Destroy(e.gameObject);
+			    scorecount();
         }
 
     }
+	
+	public void scorecount(){
+	        	FUI.enemydie++;
+			    FUI.score = FUI.enemydie*FUI.FoodCount+FUI.score;
+			    FUI.enemydie = 0;
+		
+	}
+	
 }

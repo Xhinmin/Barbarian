@@ -6,27 +6,34 @@ public class Enemy : MonoBehaviour
 
     public int MinX, MaxX;
     public int MinY, MaxY;
+	public int moveZ,moveX;
     int i;
+	int XX,ZZ;
     // Use this for initialization
     void Start()
     {
         //NEW POSITION
         newPosition();
         //AUTO ROTATE
-        newAction();
+		
+//        newAction();
 
     }
 
     void newPosition()
     {
         i = Random.Range(0, 2);
-        if (i == 0)
+        if (i == 0){
             this.transform.position = new Vector3(MinX, this.transform.position.y, Random.Range(MinY, MaxY));
-        else
+			transform.Rotate(0, 0, -90);		    
+		    }
+	    if (i != 0)
             this.transform.position = new Vector3(Random.Range(MinX, MaxX), this.transform.position.y, MinY);
     }
-
-
+	
+	
+	
+/*
     void newAction()
     {
         if (i == 0)
@@ -37,12 +44,46 @@ public class Enemy : MonoBehaviour
                                                             "time", 5, "looptype", "pingpong", "easetype", iTween.EaseType.linear));
 
     }
+ */
+	
+	
 
     // Update is called once per frame
     void Update()
     {
+		
+	    if (i == 0){
+            this.transform.position = new Vector3(this.transform.position.x +moveX * Time.deltaTime,
+                                                  this.transform.position.y ,
+                                                  this.transform.position.z 
+                                                  );
+	    XX = (int)this.transform.position.x;
+		if (XX>MaxX || XX<MinX){
+			moveX = -moveX;
+			transform.Rotate(0, 0, 180);
+			}
+			
+		}
+		
+		
+		
+       if (i!= 0) {
+            this.transform.position = new Vector3(this.transform.position.x ,
+                                                  this.transform.position.y ,
+                                                  this.transform.position.z +moveZ * Time.deltaTime
+                                                  );
+	    ZZ = (int)this.transform.position.z;
+		if (ZZ>MaxY || ZZ<MinY){
+			moveZ = -moveZ;
+			transform.Rotate(0, 0, 180);
+			}
 
+			}
+		}
+		
+		
+		
     }
 
 
-}
+
