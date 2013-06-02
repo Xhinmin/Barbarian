@@ -8,7 +8,7 @@ public class Enemy : MonoBehaviour
     public int MinY, MaxY;
 	public int moveZ,moveX;
     int i;
-	int XX,ZZ;
+	float XX,ZZ;
     // Use this for initialization
     void Start()
     {
@@ -25,6 +25,7 @@ public class Enemy : MonoBehaviour
         i = Random.Range(0, 2);
         if (i == 0){
             this.transform.position = new Vector3(MinX, this.transform.position.y, Random.Range(MinY, MaxY));
+			//X軸敵人先轉向90度
 			transform.Rotate(0, 0, -90);		    
 		    }
 	    if (i != 0)
@@ -51,13 +52,14 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-		
+		//X軸敵人移動
 	    if (i == 0){
             this.transform.position = new Vector3(this.transform.position.x +moveX * Time.deltaTime,
                                                   this.transform.position.y ,
                                                   this.transform.position.z 
                                                   );
-	    XX = (int)this.transform.position.x;
+		//判斷邊界反向	
+	    XX = this.transform.position.x;
 		if (XX>MaxX || XX<MinX){
 			moveX = -moveX;
 			transform.Rotate(0, 0, 180);
@@ -67,23 +69,27 @@ public class Enemy : MonoBehaviour
 		
 		
 		
-       if (i!= 0) {
+	   //Y軸敵人移動
+					
+       if (i != 0) 
+		{
             this.transform.position = new Vector3(this.transform.position.x ,
                                                   this.transform.position.y ,
                                                   this.transform.position.z +moveZ * Time.deltaTime
-                                                  );
-	    ZZ = (int)this.transform.position.z;
+    	                                          );
+	    //判斷邊界反向			
+	    ZZ = this.transform.position.z;
 		if (ZZ>MaxY || ZZ<MinY){
 			moveZ = -moveZ;
 			transform.Rotate(0, 0, 180);
 			}
+		          }
+		
+		}		
+    
 
-			}
-		}
-		
-		
-		
-    }
+
+}
 
 
 

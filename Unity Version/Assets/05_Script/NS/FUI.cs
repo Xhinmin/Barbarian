@@ -11,10 +11,11 @@ public class FUI : MonoBehaviour {
     public static float Volume;
     public GameObject RestartButton;
     public GameObject Ring;
-
+	public int highscorecount;
+	
 	// Use this for initialization
 	void Start () {
-	
+		highscorecount = 1;	
 	}
 	
 	// Update is called once per frame
@@ -23,6 +24,11 @@ public class FUI : MonoBehaviour {
         {
             //«ö¶s¶}±Ò ®É¶¡ŒÈ°±
             Time.timeScale = 0;
+			//最高分數
+    		if(FUI.score >= FUI.highestscore && highscorecount == 1){  
+				FUI.highestscore = FUI.score;
+				highscorecount = 0;
+			}
             RestartButton.SetActive(true);
 			
         }

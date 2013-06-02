@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 
 public class Player : MonoBehaviour
@@ -25,7 +25,7 @@ public class Player : MonoBehaviour
 		if (this.transform.position.y >= 10)
             this.transform.position = new Vector3(this.transform.position.x, 10, this.transform.position.z);
 
-        //���խ��q�j�p
+        //ŽúžÕ­µ¶q€j€p
         if (FUI.Volume > 0.30)
         {
             iTween.ColorTo(GameObject.Find("Ring"), iTween.Hash("r", 1, "g", 0, "b", 0, "a", 1, "time", 0.25));
@@ -33,15 +33,18 @@ public class Player : MonoBehaviour
             foreach (GameObject e in GameObject.FindGameObjectsWithTag("Enemy"))
             {
                 float dis = Vector3.Distance(this.transform.position, e.transform.position);
-                if (dis < 40 + FUI.FoodCount * 10)
-                {
-                    Destroy(e.gameObject);
-					scorecount();
-                    FUI.FoodCount = 0;
-		   		    
-                }
-            }
+                if (dis < 40 + FUI.FoodCount * 10){
+                             Destroy(e.gameObject);
+					         FUI.enemydie++;
+						
+			            }
 
+		   		    
+                
+            }
+			scorecount();
+			FUI.FoodCount = 0;
+			FUI.enemydie =0;
         }
     }
 
@@ -116,23 +119,35 @@ public class Player : MonoBehaviour
 
     public void Fire()
     {
-        iTween.ColorTo(GameObject.Find("Ring"), iTween.Hash("r", 1, "g", 0, "b", 0, "a", 1, "time", 0.25));
+		
+		FUI.Volume = 50;
+/*        iTween.ColorTo(GameObject.Find("Ring"), iTween.Hash("r", 1, "g", 0, "b", 0, "a", 1, "time", 0.25));
         iTween.ColorTo(GameObject.Find("Ring"), iTween.Hash("r", 1, "g", 1, "b", 1, "a", 1, "time", 0.25, "delay", 0.25));
 
         foreach (GameObject e in GameObject.FindGameObjectsWithTag("Enemy"))
         {
             float dis = Vector3.Distance(this.transform.position, e.transform.position);
-            if (dis < 40 + FUI.FoodCount * 10)
-                Destroy(e.gameObject);
-			    scorecount();
+            if (dis < 40 + FUI.FoodCount * 10){
+                    Destroy(e.gameObject);
+			       	FUI.enemydie++;
+				    scorecount();
+			    }
+			    FUI.enemydie = 0;
+			    FUI.FoodCount = 0;
         }
+*/        
 
     }
 	
+	
+	//分數計算
 	public void scorecount(){
-	        	FUI.enemydie++;
+	            
 			    FUI.score = FUI.enemydie*FUI.FoodCount+FUI.score;
-			    FUI.enemydie = 0;
+
+
+
+		
 		
 	}
 	
