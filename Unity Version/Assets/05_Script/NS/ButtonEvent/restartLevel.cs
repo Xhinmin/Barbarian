@@ -1,17 +1,16 @@
 using UnityEngine;
 using System.Collections;
 
-public class restartLevel : MonoBehaviour {
+public class RestartLevel : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
         Application.LoadLevel(0);
         Time.timeScale = 1;
 		FUI.HP = 3;
-		FUI.score = 0;
+		FUI.Score = 0;
 		FUI.FoodCount = 0;
         Destroy(this.gameObject);
-//		Application.Quit();
     }
 	
 	// Update is called once per frame

@@ -3,6 +3,7 @@ using System.Collections;
 
 public class AudioInput : MonoBehaviour {
 
+    //http://forum.unity3d.com/threads/133501-check-current-Microphone-input-volume
     string device;
     public bool active;
     

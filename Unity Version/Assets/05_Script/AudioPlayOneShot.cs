@@ -3,7 +3,7 @@ using System.Collections;
 
 public class AudioPlayOneShot : MonoBehaviour {
 
-    public AudioPlayOneShot ST;
+    public static AudioPlayOneShot script;
     public AudioClip[] Audio;
     public int audioCount;
     public bool playOneShot;
@@ -13,7 +13,7 @@ public class AudioPlayOneShot : MonoBehaviour {
         if (!this.GetComponent<AudioSource>())
             this.gameObject.AddComponent<AudioSource>();
 
-        ST = this;
+        script = this;
 	}
 	
 	// Update is called once per frame

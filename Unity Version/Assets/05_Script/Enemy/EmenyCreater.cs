@@ -14,6 +14,7 @@ public class EmenyCreater : MonoBehaviour {
 	// Update is called once per frame
     void Update()
     {
+        
         if (Time.time >= time + interalTime)
         {
             //Create Food 
@@ -21,5 +22,6 @@ public class EmenyCreater : MonoBehaviour {
              Instantiate(Enemy);
             time = Time.time;
         }
+         
     }
 }
