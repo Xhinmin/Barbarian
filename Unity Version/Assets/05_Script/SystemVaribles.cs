@@ -13,6 +13,8 @@ public class SystemVaribles : MonoBehaviour {
     public GameObject AttackRing;
     //¼Ä¤HPrefab
     public GameObject EnemyPrefab;
+    //¯S®ÄPrefab
+    public GameObject AttackRingEffect;
 
 	// Use this for initialization
 	void Start () {

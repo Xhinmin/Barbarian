@@ -10,6 +10,8 @@ public class Player : MonoBehaviour
     private Vector3 _force;
     private GameObject _enemyPrefab;
     private GameObject _AttackRing;
+    private GameObject _AttackRingEffect;
+
     int emenycount;
 
     void Init()
@@ -17,12 +19,13 @@ public class Player : MonoBehaviour
         isInit = true;
         _enemyPrefab = SystemVaribles.script.EnemyPrefab;
         _AttackRing = SystemVaribles.script.AttackRing;
+        _AttackRingEffect = SystemVaribles.script.AttackRingEffect;
     }
 
     // Use this for initialization
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame
@@ -38,21 +41,7 @@ public class Player : MonoBehaviour
 
         if (FUI.Volume > 0.30)
         {
-            iTween.ColorTo(_AttackRing, iTween.Hash("r", 1, "g", 0, "b", 0, "a", 1, "time", 0.25));
-            iTween.ColorTo(_AttackRing, iTween.Hash("r", 1, "g", 1, "b", 1, "a", 1, "time", 0.25, "delay", 0.25));
-            foreach (GameObject e in GameObject.FindGameObjectsWithTag("Enemy"))
-            {
-                float dis = Vector3.Distance(this.transform.position, e.transform.position);
-                if (dis < 40 + FUI.FoodCount * 10)
-                {
-                    Destroy(e.gameObject);
-                    FUI.HitEnemyCount++;
-                    scorecount();
-                }
-
-            }
-            
-
+            Fire();
         }
     }
 
@@ -120,7 +109,8 @@ public class Player : MonoBehaviour
     {
         iTween.ColorTo(_AttackRing, iTween.Hash("r", 1, "g", 0, "b", 0, "a", 1, "time", 0.25));
         iTween.ColorTo(_AttackRing, iTween.Hash("r", 1, "g", 1, "b", 1, "a", 1, "time", 0.25, "delay", 0.25));
-
+        GameObject newAttackRingEffect = (GameObject)Instantiate(_AttackRingEffect, this.transform.position, Quaternion.Euler(0, 0, 0));
+        newAttackRingEffect.GetComponent<FollowGameObjectPosition>().gameObject = this.gameObject;
         foreach (GameObject e in GameObject.FindGameObjectsWithTag("Enemy"))
         {
             float dis = Vector3.Distance(this.transform.position, e.transform.position);
