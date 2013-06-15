@@ -1,4 +1,4 @@
-Ôªøusing UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class FUI : MonoBehaviour
@@ -25,7 +25,7 @@ public class FUI : MonoBehaviour
         {
             //TimeScale set to zero
             Time.timeScale = 0;
-            //ÊúÄÈ´òÂàÜÊï∏
+            //≥Ã∞™§¿º∆
             if (FUI.Score >= FUI.Highscore)
             {
                 FUI.Highscore = FUI.Score;
@@ -44,12 +44,12 @@ public class FUI : MonoBehaviour
         GUI.color = Color.black;
         GUI.skin.label.fontSize = 40;
 
-        GUI.Label(new Rect(0, 100, 1000, 200), "ÁîüÂëΩÔºö" + HP.ToString());
-        GUI.Label(new Rect(0, 140, 1000, 200), "ÁØÑÂúçÔºö" + FoodCount.ToString());
-        GUI.Label(new Rect(0, 180, 1000, 200), "Èü≥ÈáèÔºö" + (Volume * 100).ToString("00.00"));
+        GUI.Label(new Rect(0, 100, 1000, 200), "•Õ©R°G" + HP.ToString());
+        GUI.Label(new Rect(0, 140, 1000, 200), "Ωd≥Ú°G" + FoodCount.ToString());
+        GUI.Label(new Rect(0, 180, 1000, 200), "≠µ∂q°G" + (Volume * 100).ToString("00.00"));
 
         GUI.skin.label.fontSize = 50;
-        GUI.Label(new Rect(0, 0, 1000, 200), "ÊúÄÈ´òÂàÜÊï∏Ôºö" + Highscore.ToString());
-        GUI.Label(new Rect(0, 50, 1000, 200), "ÂàÜÊï∏       Ôºö" + Score.ToString());
+        GUI.Label(new Rect(0, 0, 1000, 200), "≥Ã∞™§¿º∆°G" + Highscore.ToString());
+        GUI.Label(new Rect(0, 50, 1000, 200), "§¿º∆       °G" + Score.ToString());
     }
 }

@@ -25,7 +25,7 @@ public class Enemy : MonoBehaviour
         i = Random.Range(0, 2);
         if (i == 0){
             this.transform.position = new Vector3(MinX, this.transform.position.y, Random.Range(MinY, MaxY));
-			//Xè»¸æ•µäººå…ˆè½‰å‘90åº¦
+			//X¶b¼Ä¤H¥ýÂà¦V90«×
 			transform.Rotate(0, 0, -90);		    
 		    }
 	    if (i != 0)
@@ -52,13 +52,13 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-		//Xè»¸æ•µäººç§»å‹•
+		//X¶b¼Ä¤H²¾°Ê
 	    if (i == 0){
             this.transform.position = new Vector3(this.transform.position.x +moveX * Time.deltaTime,
                                                   this.transform.position.y ,
                                                   this.transform.position.z 
                                                   );
-		//åˆ¤æ–·é‚Šç•Œåå‘	
+		//§PÂ_Ãä¬É¤Ï¦V	
 	    XX = this.transform.position.x;
 		if (XX>MaxX || XX<MinX){
 			moveX = -moveX;
@@ -69,7 +69,7 @@ public class Enemy : MonoBehaviour
 		
 		
 		
-	   //Yè»¸æ•µäººç§»å‹•
+	   //Y¶b¼Ä¤H²¾°Ê
 					
        if (i != 0) 
 		{
@@ -77,7 +77,7 @@ public class Enemy : MonoBehaviour
                                                   this.transform.position.y ,
                                                   this.transform.position.z +moveZ * Time.deltaTime
     	                                          );
-	    //åˆ¤æ–·é‚Šç•Œåå‘			
+	    //§PÂ_Ãä¬É¤Ï¦V			
 	    ZZ = this.transform.position.z;
 		if (ZZ>MaxY || ZZ<MinY){
 			moveZ = -moveZ;
