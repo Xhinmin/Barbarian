@@ -119,6 +119,7 @@ public class Player : MonoBehaviour
                 Destroy(e.gameObject);
                 FUI.HitEnemyCount++;
                 scorecount();
+				Handheld.Vibrate ();
             }
 
         }
