@@ -9,10 +9,13 @@ public class FUI : MonoBehaviour
     public static int HitEnemyCount;
     public static int Score;
     public static int Highscore;
+	public static int GuiWardTime;
     public static float Volume;
+	public static int GuiScore;
     public GameObject RestartButton;
     public GameObject Ring;
-
+	public GameObject Player;
+	
     // Use this for initialization
     void Start()
     {
@@ -36,7 +39,6 @@ public class FUI : MonoBehaviour
         Ring.transform.localScale = new Vector3(5 + FoodCount * 2, 1, 5 + FoodCount * 2);
 
 
-
     }
 
     void OnGUI()
@@ -51,5 +53,38 @@ public class FUI : MonoBehaviour
         GUI.skin.label.fontSize = 50;
         GUI.Label(new Rect(0, 0, 1000, 200), "最高分數：" + Highscore.ToString());
         GUI.Label(new Rect(0, 50, 1000, 200), "分數       ：" + Score.ToString());
+		
+		
+		
+		
+		
+
+		if(GuiScore>=2&&GuiScore<6&&GuiWardTime<200)
+		{
+			GUI.color = Color.blue;
+			GUI.Label(new Rect(450, 120, 1000, 200), "GOOD");
+			
+			GuiWardTime++;
+		}
+		
+		if(GuiScore>=6&&GuiScore<10&&GuiWardTime<200)
+		{
+			GUI.color = Color.blue;
+			GUI.Label(new Rect(450, 120, 1000, 200), "NICE");
+			
+			GuiWardTime++;
+		}
+
+		
+		if(GuiScore>=10&&GuiWardTime<200)
+		{
+			GUI.color = Color.red;
+			GUI.skin.label.fontSize = 80;
+			GUI.Label(new Rect(450, 120, 1000, 200), "GOD LIKE");
+			
+			GuiWardTime++;
+		}
+		
+		
     }
 }

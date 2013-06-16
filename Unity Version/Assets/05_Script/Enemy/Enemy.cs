@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour
     public int moveZ, moveX;
 	int MoveSpeedZ , MoveSpeedX;
     int i;
+	int CalToofast;
     float XX, ZZ;
     // Use this for initialization
     void Start()
@@ -30,12 +31,12 @@ public class Enemy : MonoBehaviour
         i = Random.Range(0, 2);
         if (i == 0)
         {
-            this.transform.position = new Vector3(MinX, this.transform.position.y, Random.Range(MinY, MaxY));
+            this.transform.position = new Vector3(MinX+5, this.transform.position.y, Random.Range(MinY, MaxY));
             //X軸敵人先轉向90度
             transform.Rotate(0, 0, -90);
         }
         if (i == 1)
-            this.transform.position = new Vector3(Random.Range(MinX, MaxX), this.transform.position.y, MinY);
+            this.transform.position = new Vector3(Random.Range(MinX, MaxX), this.transform.position.y, MinY+5);
     }
 
 
@@ -66,17 +67,21 @@ public class Enemy : MonoBehaviour
                                                   this.transform.position.z
                                                   );
             //判斷邊界反向	
-            if (this.transform.position.x > MaxX )
+            if (this.transform.position.x > MaxX && CalToofast > 3 )
             {
                 MoveSpeedX = -moveX;
-                transform.Rotate(0, 0, 180);				
+                transform.Rotate(0, 0, 180);
+				CalToofast = 0;
             }
 			
-			if(this.transform.position.x < MinX)
+			if(this.transform.position.x < MinX && CalToofast > 3)
 			{
 				MoveSpeedX = moveX;
                 transform.Rotate(0, 0, 180);	
+			    CalToofast = 0;
 			}
+			
+			CalToofast++;
 			
 			
         }
@@ -92,17 +97,21 @@ public class Enemy : MonoBehaviour
                                                   this.transform.position.z + MoveSpeedZ * Time.deltaTime
                                                   );
             //判斷邊界反向
-            if (this.transform.position.z > MaxY )
+            if (this.transform.position.z > MaxY && CalToofast > 3)
             {
                 MoveSpeedZ = -moveZ;
                 transform.Rotate(0, 0, 180);
+				CalToofast = 0;
             }
 			
-			if(this.transform.position.z < MinY)
+			if(this.transform.position.z < MinY && CalToofast > 3)
 			{
 				MoveSpeedZ = moveZ;
                 transform.Rotate(0, 0, 180);
+			    CalToofast = 0;
 			}
+			
+			CalToofast++;
         }
 		
 

@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     private GameObject _AttackRingEffect;
 
     int emenycount;
+	int DelayFire;
 
     void Init()
     {
@@ -39,10 +40,14 @@ public class Player : MonoBehaviour
             this.transform.position = new Vector3(this.transform.position.x, 10, this.transform.position.z);
 
 
-        if (FUI.Volume > 0.30)
+        if (FUI.Volume > 0.30 && DelayFire>10)
         {
             Fire();
+			DelayFire = 0;
         }
+		
+		DelayFire++;
+		
     }
 
     void FixedUpdate()
@@ -107,6 +112,7 @@ public class Player : MonoBehaviour
 
     public void Fire()
     {
+		Handheld.Vibrate ();
         iTween.ColorTo(_AttackRing, iTween.Hash("r", 1, "g", 0, "b", 0, "a", 1, "time", 0.25));
         iTween.ColorTo(_AttackRing, iTween.Hash("r", 1, "g", 1, "b", 1, "a", 1, "time", 0.25, "delay", 0.25));
         GameObject newAttackRingEffect = (GameObject)Instantiate(_AttackRingEffect, this.transform.position, Quaternion.Euler(0, 0, 0));
@@ -118,20 +124,22 @@ public class Player : MonoBehaviour
             {
                 Destroy(e.gameObject);
                 FUI.HitEnemyCount++;
-                scorecount();
-				Handheld.Vibrate ();
+                				
             }
 
         }
+		scorecount();
     }
 
 
     //分數計算
     public void scorecount()
     {
-        FUI.Score = FUI.HitEnemyCount * FUI.FoodCount + FUI.Score;
+		FUI.GuiWardTime = 0;
+		FUI.GuiScore = FUI.HitEnemyCount * FUI.FoodCount;
+		FUI.Score = FUI.HitEnemyCount * FUI.FoodCount + FUI.Score;
         FUI.HitEnemyCount = 0;
-        FUI.FoodCount = 0;
+		FUI.FoodCount = 0;
     }
 
 }
