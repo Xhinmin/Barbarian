@@ -7,6 +7,7 @@ public class Enemy : MonoBehaviour
     public int MinX, MaxX;
     public int MinY, MaxY;
     public int moveZ, moveX;
+	int MoveSpeedZ , MoveSpeedX;
     int i;
     float XX, ZZ;
     // Use this for initialization
@@ -17,6 +18,10 @@ public class Enemy : MonoBehaviour
         //AUTO ROTATE
 
         //        newAction();
+		
+		
+		MoveSpeedX = moveX;
+		MoveSpeedZ = moveZ;
 
     }
 
@@ -56,17 +61,24 @@ public class Enemy : MonoBehaviour
         //X軸敵人移動
         if (i == 0)
         {
-            this.transform.position = new Vector3(this.transform.position.x + moveX * Time.deltaTime,
+            this.transform.position = new Vector3(this.transform.position.x + MoveSpeedX * Time.deltaTime,
                                                   this.transform.position.y,
                                                   this.transform.position.z
                                                   );
             //判斷邊界反向	
-            if (this.transform.position.x > MaxX || this.transform.position.x < MinX)
+            if (this.transform.position.x > MaxX )
             {
-                moveX = -moveX;
-                transform.Rotate(0, 0, 180);
+                MoveSpeedX = -moveX;
+                transform.Rotate(0, 0, 180);				
             }
-
+			
+			if(this.transform.position.x < MinX)
+			{
+				MoveSpeedX = moveX;
+                transform.Rotate(0, 0, 180);	
+			}
+			
+			
         }
 
 
@@ -77,15 +89,22 @@ public class Enemy : MonoBehaviour
         {
             this.transform.position = new Vector3(this.transform.position.x,
                                                   this.transform.position.y,
-                                                  this.transform.position.z + moveZ * Time.deltaTime
+                                                  this.transform.position.z + MoveSpeedZ * Time.deltaTime
                                                   );
             //判斷邊界反向
-            if (this.transform.position.z > MaxY || this.transform.position.z < MinY)
+            if (this.transform.position.z > MaxY )
             {
-                moveZ = -moveZ;
+                MoveSpeedZ = -moveZ;
                 transform.Rotate(0, 0, 180);
             }
+			
+			if(this.transform.position.z < MinY)
+			{
+				MoveSpeedZ = moveZ;
+                transform.Rotate(0, 0, 180);
+			}
         }
+		
 
     }
 
