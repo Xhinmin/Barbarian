@@ -1,7 +1,9 @@
-���Z�ڤڭp�e
+野蠻巴巴遊戲計畫
 ==============
 
-Unity Project
+Unity Game Project
 --------------
 
-*5/28�N�n�Ĥ@���q�F*
+2013 遊戲專題
+* Unity + 聲音輸入
+* Unity + 陀螺儀控制
